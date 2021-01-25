@@ -2,8 +2,17 @@ const express = require('express')
 const crypto = require('crypto')
 const users = require('../models/Users')
 const Users = require('../models/Users')
-
+/* instalar para usar json Web Token
+npm i -S jsonwebtoken */
+const jwt = require('jsonwebtoken')
 const router = express.Router()
+
+const signToken = (id) => {
+    return jwt.sign({_id}, 'mi-secreto', {
+        expiresIn: 60 * 60 * 24 * 365, // seg min h d
+    })
+}
+
 
 router.post('/register', (req, res) => {
     /* res.send('im a register') */
