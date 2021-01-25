@@ -10,6 +10,9 @@ const cors = require('cors')
 const meals = require('./routes/meals')
 const orders = require('./routes/orders')
 
+// auth
+const auth = require('./routes/auth')
+
 // creando app express
 const app = express() // devuelve un obj con distintos métodos para crear la app
 app.use(bodyParser.json()) // metodo para agregar plugins para agregar funcionalidades al servidor
@@ -30,5 +33,6 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
 
 app.use('/api/meals', meals)
 app.use('/api/orders', orders)
+app.use('/api/auth', auth)
 
 module.exports = app
