@@ -5,6 +5,7 @@ const Users = require('../models/Users')
 /* instalar para usar json Web Token
 npm i -S jsonwebtoken */
 const jwt = require('jsonwebtoken')
+const { isAuthenticated } = require('../auth')
 const router = express.Router()
 
 const signToken = (id) => {
@@ -55,6 +56,10 @@ router.post('/login', (req, res) => {
                 return res.send('usuario y/o contraseña incorrecto')
             })
         })
+})
+
+router.get('/me', isAuthenticated, (req, res) => {
+    res.send(req.user)
 })
 
 module.exports = router

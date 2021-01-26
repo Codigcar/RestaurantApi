@@ -1,6 +1,7 @@
 /* middelware */  
 const jwt = require('jsonwebtoken')
 const Users = require('../models/Users')
+const { isAuthenticated } = require('../auth')
 
 /* module.exports = */
 const isAuthenticated = (req, res, next) => {
